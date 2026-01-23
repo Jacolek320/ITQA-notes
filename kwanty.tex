@@ -877,6 +877,27 @@ Macierze unitarne są dla nas istotne o tyle, że bramki kwantowe są właśnie 
     \[ = \Bigl(\bra{v}U^\dagger\Bigr)\Bigl(U\ket{v}\Bigr) = \Bigl(U\ket{v}\Bigr)^\dagger\Bigl(U\ket{v}\Bigr) = \braket{Uv}{Uv} = \norm{Uv}_2 \]
 \end{proof}
 
+\subsection{Stany Bella}
+\begin{definition*}{}
+    \textbf{Stanami Bella} określamy 2-kubitowe stany \( \frac{\ket{00} \pm \ket{11}}{\sqrt2} \) oraz \( \frac{\ket{01} \pm \ket{10}}{\sqrt2} \).   
+\end{definition*}
+Stany Bella są najprostszym przykładem splątania kwantowego. Zmierzenie wartości pierwszego kubitu sprawi, że wartość drugiego kubitu zostanie już ustalona. Jednak gdybyśmy nie zmierzyli pierwszego kubitu, to pomiar drugiego z nich mógłby wyprodukować zarówno $0$ jak i $1$. \\
+Nietrudno stworzyć taki stan. Czyni to na przykład następujący układ:
+\begin{align}
+\begin{tikzpicture}
+\node[scale=1.7]{
+\begin{quantikz}
+\lstick{$\ket{0}$} & \gate{H} & \ctrl{1} & \rstick[2]{$\frac{\ket{00}+\ket{11}}{\sqrt2}$}  \\
+\lstick{$\ket{0}$} &          & \targ{}  &
+\end{quantikz}
+};
+\end{tikzpicture}
+\end{align}
+
+Jest tak, bo:
+\[ \ket{00} \xmapsto{H\otimes I} \Bigl(\frac{\ket{0}+\ket{1}}{\sqrt2}\Bigr)\ket{0} = \frac{\ket{00}+\ket{10}}{\sqrt2} \xmapsto{CX} \frac{\ket{00}+\ket{11}}{\sqrt2} \]
+
+
 % ------------------------------------------------------------------------------------------
 \newpage
 \section{Algorytm Deutscha-Jozsy}
@@ -1810,30 +1831,5 @@ Muszą zachodzić takowe własności:
 \end{definition*}
 
 $U(t) = exp(-i\hat{H}t/\lambda)\approx f(\frac{\hat{H}t}{\lambda})$
-
-
-% ------------------------------------------------------------------------------------------
-\newpage
-\section{Random}
-
-\subsection{Stany Bella}
-\begin{definition*}{}
-    \textbf{Stanami Bella} określamy 2-kubitowe stany \( \frac{\ket{00} \pm \ket{11}}{\sqrt2} \) oraz \( \frac{\ket{01} \pm \ket{10}}{\sqrt2} \).   
-\end{definition*}
-Stany Bella są najprostszym przykładem splątania kwantowego. Zmierzenie wartości pierwszego kubitu sprawi, że wartość drugiego kubitu zostanie już ustalona. Jednak gdybyśmy nie zmierzyli pierwszego kubitu, to pomiar drugiego z nich mógłby wyprodukować zarówno $0$ jak i $1$. \\
-Nietrudno stworzyć taki stan. Czyni to na przykład następujący układ:
-\begin{align}
-\begin{tikzpicture}
-\node[scale=1.7]{
-\begin{quantikz}
-\lstick{$\ket{0}$} & \gate{H} & \ctrl{1} & \rstick[2]{$\frac{\ket{00}+\ket{11}}{\sqrt2}$}  \\
-\lstick{$\ket{0}$} &          & \targ{}  &
-\end{quantikz}
-};
-\end{tikzpicture}
-\end{align}
-
-Jest tak, bo:
-\[ \ket{00} \xmapsto{H\otimes I} \Bigl(\frac{\ket{0}+\ket{1}}{\sqrt2}\Bigr)\ket{0} = \frac{\ket{00}+\ket{10}}{\sqrt2} \xmapsto{CX} \frac{\ket{00}+\ket{11}}{\sqrt2} \]
 
 \end{document}
