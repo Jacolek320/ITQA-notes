@@ -964,13 +964,13 @@ Jeśli zmierzymy $\ket{0}^{\otimes n}$ to funkcja była stała. W przeciwnym prz
 
 \item $\ket{\psi_3}$: \\
     Bramka Hadamarda potrafi jeszcze tak:
-        \[ H\ket{x} = \frac{1}{\sqrt{2^n}}\sum_{i=0}^{2^n-1}(-1)^{x\cdot i}\]
+        \[ H\ket{x} = \frac{1}{\sqrt{2^n}}\sum_{i=0}^{2^n-1}(-1)^{x\cdot i}\ket{i}\]
     gdzie $x\cdot i$ oznacza iloczyn skalarny, czyli $x\cdot i = x_1i_1 \oplus ... \oplus x_ni_n$. \\
-    Ostatni wynikowy kubit nie jest nam potrzebny, więc go ignorujemy. Zatem niech $\psi_2'$ oznacza stan $\psi_2$ z uciętym ostatnim bitem, analogicznie $\phi_3'$. Wtedy:
+    Ostatni wynikowy kubit nie jest nam potrzebny, więc go ignorujemy. Zatem niech $\psi_2'$ oznacza stan $\psi_2$ z uciętym ostatnim bitem, analogicznie $\psi_3'$. Wtedy:
     \[ \ket{\psi_2'} = \frac{1}{\sqrt{2^{n}}}\sum_{x=0}^{2^n-1} (-1)^{f(x)}\ket{x} \]
     Zatem ostatnia transformacja daje nam
     \[ \ket{\psi_3'} = H\ket{\psi_2'} = \frac{1}{2^n}\sum_{x=0}^{2^{n-1}}(-1)^{f(x)}\cdot \sum_{i=0}^{2^n-1}(-1)^{x\cdot i}\ket{i} \]
-    \[ = \frac{1}{2^n} \sum_{i=0}^{2^n-1} \left[ \sum_{x=0}^{2^n-1}(-1)^{f(x)}(-1)^{x\cdot i} \right] \]
+    \[ = \frac{1}{2^n} \sum_{i=0}^{2^n-1} \left[ \sum_{x=0}^{2^n-1}(-1)^{f(x)}(-1)^{x\cdot i} \right]\ket{i} \]
     Ale teraz zauważmy, że prawdopodobieństwo zmierzenia stanu $0^{\otimes n}$ wynosi
     \[ \left|\frac{1}{2^n}\sum_{x=0}^{2^n-1}(-1)^{f(x)} \right|^2 \]
     Wystarczy teraz przeanalizować przypadki:
@@ -1025,18 +1025,18 @@ A zatem po kolei:
 \begin{itemize}
     \item $\ket{\psi_0} = \ket{0}_n\ket{1}$
     \item Aplikujemy Hadamarda. Pamiętamy, że:
-        \[ H\ket{0}_n = \frac{1}{\sqrt{2^n}}\sum_{x=0}^{2^n-1}\ket{x}, \qquad H\ket{1} = \ket{+} \]
+        \[ H\ket{0}_n = \frac{1}{\sqrt{2^n}}\sum_{x=0}^{2^n-1}\ket{x}, \qquad H\ket{1} = \ket{-} \]
         Zatem
-        \[ \ket{\psi_1} = H\ket{\psi_0} = \frac{1}{\sqrt{2^n}}\sum_{x=0}^{2^n-1}\ket{x}\ket{+} \]
+        \[ \ket{\psi_1} = H\ket{\psi_0} = \frac{1}{\sqrt{2^n}}\sum_{x=0}^{2^n-1}\ket{x}\ket{-} \]
     \item Aplikujemy wyrocznię $U_f$. Wiemy, że działa ona tak:
-        \[ U_f\ket{x}_n\ket{y} = \ket{x}_n\ket{f(x)} \]
+        \[ U_f\ket{x}_n\ket{y} = \ket{x}_n\ket{y\otimes f(x)} \]
         Czyli:
-        \[ U_f\ket{x}_n\ket{+} = U_f\ket{x}_n\left(\frac{\ket{0}-\ket{1}}{\sqrt2}\right)
+        \[ U_f\ket{x}_n\ket{-} = U_f\ket{x}_n\left(\frac{\ket{0}-\ket{1}}{\sqrt2}\right)
         = \ket{x}_n\left(\frac{\ket{f(x)}-\ket{f(x)\oplus 1}}{\sqrt2}\right) \]
         Zauważmy, po ''zignorowaniu'' ostatniego kubitu jedynym widocznym wynikiem $f(x)$ w układzie jest zmieniona faza (+1 lub -1). \\    
         Niech $\ket{g}$ oznacza stan ostatniego bitu. Wtedy mamy:
         \[ \ket{\psi_2} = U_f\ket{\psi_1} = \frac{1}{\sqrt{2^n}}\sum_{x=0}^{2^n-1}(-1)^{f(x)}\ket{x}\ket{g} \]
-    \item Ponownie Hadamard. Pamiętając, że $H\ket{y} = \frac{1}{\sqrt{2^n}}\sum_{i=0}^{2^n-1}(-1)^{k\cdot i}\ket{i}$ otrzymujemy:
+    \item Ponownie Hadamard. Pamiętając, że $H\ket{k} = \frac{1}{\sqrt{2^n}}\sum_{i=0}^{2^n-1}(-1)^{k\cdot i}\ket{i}$ otrzymujemy:
         \[ \ket{\psi_3} = H\ket{\psi_2} = \frac{1}{2^n}\sum_{x=0}^{2^n-1}\sum_{y=0}^{2^n-1}(-1)^{f(x)+x\cdot y}\ket{y}\ket{g} \]
 \end{itemize}
 Dla uproszczenia analizy zapomnijmy o kubicie $\ket{g}$. Zauważmy, że dla konkretnego $y$:
@@ -1167,8 +1167,6 @@ Na dzień dzisiejszy dla żadnego z powyższych zawierań nie wiadomo czy są on
 \end{definition*}
 Intuicyjnie zbiór bramek jest uniwersalny, gdy możemy zasymulować z dowolną prezycją dowolną operację $U$ możliwą na komputerze kwantowym.
 
-\subsection{Amplitude Amplification}
-% TODO: przepisać z notatek z Teamsów
 % ------------------------------------------------------------------------------------------
 \newpage
 \section{Kubityzacja}
@@ -1674,7 +1672,7 @@ Jeśli każde zmierzone $\ket{0}$ potraktujemy jako $1$, a każde $\ket{1}$ jako
     \[ = \frac{1}{2} + \frac{1}{2}\left|\braket{\phi}{\psi}\right|^2 \]
 
     gdzie $\braket{\psi\phi}{\psi\phi} = \braket{\phi\psi}{\phi\psi} = \left| \braket{\phi}{\psi} \right|^2$ bierze się stąd:
-    \[ \braket{\psi\phi}{\psi\phi} = \bra{\psi}\bra{\phi}\ket{\psi}\ket{\phi} = \braket{\psi}{\phi}\braket{\phi}{\psi} = \Bigl(\braket{\phi}{\psi}\Bigr)^\dagger \braket{\phi}{\psi} = \left|\braket{\phi}{\psi}\right|^2 \]
+    \[ \braket{\psi\phi}{\psi\phi} = \bra{\psi}\underbrace{\bra{\phi}\ket{\psi}}_\textrm{$\in\C$}\ket{\phi} = \braket{\psi}{\phi}\braket{\phi}{\psi} = \Bigl(\braket{\phi}{\psi}\Bigr)^\dagger \braket{\phi}{\psi} = \left|\braket{\phi}{\psi}\right|^2 \]
     Z tego mamy, że prawdopodobieństwa $p_1$ otrzymania $\ket{1}$:
     \[ p_1 = \frac{1}{2} - \frac{1}{2} \left|\braket{\phi}{\psi}\right|^2\]
     Wprowadźmy teraz naszą zmienną losową $X$. Z prawdopodobieństwem $p_0$ otrzymujemy 1, a z prawd. $p_1$ dostajemy $-1$. Pozostaje wyznaczyć $E[X]$:
@@ -1693,9 +1691,6 @@ A odchylenie standardowe $\sigma(X) = \sqrt{Var[X]} = \Os\left(\frac{1}{\sqrt{N}
 \[ \sigma(X) \le \varepsilon \enspace \iff* \enspace \Os\left(\frac{1}{\sqrt{N}}\right) \le \varepsilon \enspace \iff* \enspace \Os\left(\frac{1}{N}\right) \le \varepsilon^2 \enspace \iff* N = \Os\left(\frac{1}{\varepsilon^2}\right)\] \\
 \end{proof}
 
-\subsection{Amplitude estimation}
-Okazuje się, że można lepiej niż $\Os(1/\varepsilon^2)$. \\
-% TODO: przepisać z notatek z Teamsów
 % ------------------------------------------------------------------------------------------
 \newpage
 \section{Stabilizatory}
@@ -1709,6 +1704,11 @@ Zwane są też po prostu macierzami Pauliego. Mają parę ciekawych własności.
 \[ XY = -YX,\enspace XZ = -ZX,\enspace YZ = -ZY \]
     \item Każda jest własną odwrotnością:
         \[ X^2 = Y^2 = Z^2 = I \]
+    \item Ogólnie to z dokładnością do fazy tworzą zamkniętą grupę:
+        \[ XY = iZ \qquad YX = -iZ \] 
+        \[ YZ = iX \qquad ZY = -iX \] 
+        \[ ZX = iY \qquad XZ = -iY \]
+    \item Wszystkie są unitarne i hermitowskie. 
 
 \end{itemize}
 
@@ -1727,18 +1727,16 @@ Zwane są też po prostu macierzami Pauliego. Mają parę ciekawych własności.
     Niech $\ket{\psi}$ to dowolny (określony) stan $n$-kubitowy. \\
     Wtedy \textbf{grupa stabilizująca} $G$ to podzbiór wszystkich $P_n$ stabilizujących $\ket{\psi}$.  
 \end{definition*}
-\begin{definition*}{}
-    Dla $n$-kubitów, mianem \textbf{grupy stabilizującej Pauliego} określamy grupę $G\le P_n$, która:
-    \begin{itemize}
-        \item jest abelowa ($PQ\in G \iff* QP\in G$)
-        \item $-I^{\otimes n} \notin G$
-    \end{itemize}  
-\end{definition*}
+Mają one ciekawe własności. Załóżmy, że mamy grupę stabilizujacą $G\le P_n$ na $n$ kubitach. Wtedy:
+\begin{itemize}
+    \item $G$ jest abelowa ($PQ\in G \iff* QP\in G$)
+    \item $-I^{\otimes n} \notin G$
+\end{itemize}  
 
 \begin{definition*}{}
     \textbf{Wymiar} grupy $G$ definiujemy następująco:
-        \[ \dim(G) := \log_2|G|-2 \]
-    gdzie -2 bierze się z faktu, że nie wliczamy fazy. Równoważnie wymiar to ilość generatorów danej grupy. 
+        \[ \dim(G) := \log_2|G| \]
+    Równoważnie wymiar to ilość generatorów danej grupy. 
 \end{definition*}
 W szczególności $\dim(G)=k\in \N$ jest równoważne temu, że $|G|=2^k$. \\
 Ale przecież jeśli $G\le P_n$, to z tw. Lagrange'a mamy, że $|G|$ dzieli $|P_n|$. Ale (z definicji) $P_n=4^{n+1}$. Oznacza to, że zawsze $G=2^k$, dla pewnego $k\in \N$. \\
@@ -1762,7 +1760,7 @@ Ale przecież jeśli $G\le P_n$, to z tw. Lagrange'a mamy, że $|G|$ dzieli $|P_
             \[ TXT^\dagger = \mat{1, 0}{0, \frac{1+i}{\sqrt2}} \cdot \mat{0, 1}{1, 0} \cdot \mat{1, 0}{0, \frac{1-i}{\sqrt2}}
                            = \mat{0, 1}{\frac{1+i}{\sqrt2}, 0} \cdot \mat{1, 0}{0, \frac{1-i}{\sqrt2}}
                            = \mat{0, \frac{1-i}{\sqrt2}}{\frac{1+i}{\sqrt2}, 0} \]
-            Ale nie jest żadna z bramek Pauliego, więc $T$ nie jest bramką Clifforda.
+            Ale nie jest to żadna z bramek Pauliego, więc $T$ nie jest bramką Clifforda.
     \end{itemize}
 \end{examples}
 \begin{fact}{\textbf{(1)}}
@@ -1780,56 +1778,54 @@ Gdzie zapis $\langle\dots\rangle$ oznacza grupę/zbiór generowane przez zadane 
 % ------------------------------------------------------------------------------------------
 
 \newpage
-\section{Odporność na błędy}
-
-% ------------------------------------------------------------------------------------------
-
-
-\newpage
-\section{Pamięć kwantowa}
-
-% ------------------------------------------------------------------------------------------
-
-\newpage
 \section{Adiabatic QC}
-\subsection{VQE}
+Na dzień dzisiejszy nie jesteśmy w stanie zaimplementować nawet prostych algorytmów kwantowych. A o Shorze czy Groverze to możemy zapomnieć. Problemem są błędy obliczeń, dekoherencja czy po prostu za mała liczba kubitów w systemach. \\
+Nie wszystko jednak stracone, bo istnieją już \textit{prawie} praktyczne algorytmy kwantowe służące do rozwiązywania zadań optymalizacyjnych. Działają one na trochę innej zasadzie niż te, z którymi się spotkaliśmy wcześniej. Z tego powodu wyróżnia się to inne podejście jako osobny paradygmat \textit{adiabatycznych} obliczeń kwantowych (adiabatic QC).  
+\begin{theorem*}{(Variational Principle)}
+    Niech $H$ będzie znanym nam (niezależnym od czasu) Hamiltonianem. Niech $\ket{\psi}$ reprezentuje pewien stan kwantowy. Wtedy energię $E_\psi$ stanu $\ket{\psi}$ wyliczamy następująco:
+    \[ E_\psi = \bra{\psi}H\ket{\psi} \]
+    Niech $E_0$ określa najmniejszą możliwą energię, osiąganą dla pewnego stanu bazowego. \\
+    \textbf{Variational Principle} mówi po prostu, że:
+    \[ E_0 \le \bra{\psi}H\ket{\psi} \]
+\end{theorem*} 
 
-\begin{definition*}{barren plateaus}
 
+
+\begin{definition*}{(Barren plateaus)}
+Mianem \textbf{Barren plateaus} określamy zjawisko występowania nieproporcjonalnie dużych, (wykładniczo) płaskich regionów funkcji kosztu w kwantowych problemach optymalizacyjnych. 
 \end{definition*}
-
-
+Fakt występowania tych równin jest o tyle niefortunny, że niepraktyczne staje się stosowanie tradycyjnego spadku wzdłuż gradientu. Niepraktyczne, bo gradient ten jest prawie zawsze równy 0, i algorytm nie jest w stanie znaleźć minimum. Duża część obecnych skupia się na tym by zrozumieć i przeciwdziałać fenomenowi równin Barrena.   
 
 % ------------------------------------------------------------------------------------------
-\newpage
-\section{Zastosowania}
-\begin{definition*}{(Electronic Hamiltonian)}
-    \[ \hat{H}^{(el.)} = \sum_{ij\sigma}h_{ij}a_{i\sigma}^\dagger a_{j\sigma} + \sum_{ijk\sigma kl\tau}g_{ijkl}+a_{i\sigma}^\dagger a_{j\sigma}a_{k\tau}^\dagger a_{l\tau} \]
-    gdzie:
-    \begin{itemize}
-        \item $\sigma \in \{\uparrow,\downarrow\}$ - spin index
-        \item $p \in \{\uparrow,\downarrow\}$ - orbital index
-        \item $\delta_{ij} = [i=j]$ - delta Diraca
-        \item $a$ oraz $a_\dagger$ to \textit{creation / anihillation operators}, czyli:
-        \[ a^\dagger\ket{0} = \ket{1} \] 
-        \[ a\ket{0} = \ket{0}, \quad a\ket{1} = \ket{0} \] 
+% \newpage
+% \section{Zastosowania}
+% \begin{definition*}{(Electronic Hamiltonian)}
+%     \[ \hat{H}^{(el.)} = \sum_{ij\sigma}h_{ij}a_{i\sigma}^\dagger a_{j\sigma} + \sum_{ijk\sigma kl\tau}g_{ijkl}+a_{i\sigma}^\dagger a_{j\sigma}a_{k\tau}^\dagger a_{l\tau} \]
+%     gdzie:
+%     \begin{itemize}
+%         \item $\sigma \in \{\uparrow,\downarrow\}$ - spin index
+%         \item $p \in \{\uparrow,\downarrow\}$ - orbital index
+%         \item $\delta_{ij} = [i=j]$ - delta Diraca
+%         \item $a$ oraz $a_\dagger$ to \textit{creation / anihillation operators}, czyli:
+%         \[ a^\dagger\ket{0} = \ket{1} \] 
+%         \[ a\ket{0} = \ket{0}, \quad a\ket{1} = \ket{0} \] 
 
-    \end{itemize}
-\end{definition*}
-Muszą zachodzić takowe własności:
-\[ \left[\hat{a}^\dagger_{p\sigma}, \hat{a}_{q\rho}\right]_+  = TODO \]
-\begin{fact}
-    Dla $\ket{n_1,\dots,n_N}, n_k\in\{0,1\}$ zachodzi:
-    \[ a_k^+\ket{n_1,\dots,n_N} = (-1)^{\sum_{j<k}n_j}\ket{n_1,\dots,n_k+1,\dots,n_N} \]
-\end{fact}
-\begin{definition*}{(Transformacja Jordana-Wignera)}
-    \[ \hat{a}_{p\sigma} = \hat{a}_{\sigma N+p} = TODO \]
-    gdzie:
-    \begin{itemize}
-        \item $\sigma_k^+$ - creation operator, zdefiniowany jako $\sigma_k^+ = \frac{1}{2}\left(X_k-iY_k\right)$
-    \end{itemize}
-\end{definition*}
+%     \end{itemize}
+% \end{definition*}
+% Muszą zachodzić takowe własności:
+% \[ \left[\hat{a}^\dagger_{p\sigma}, \hat{a}_{q\rho}\right]_+  = TODO \]
+% \begin{fact}
+%     Dla $\ket{n_1,\dots,n_N}, n_k\in\{0,1\}$ zachodzi:
+%     \[ a_k^+\ket{n_1,\dots,n_N} = (-1)^{\sum_{j<k}n_j}\ket{n_1,\dots,n_k+1,\dots,n_N} \]
+% \end{fact}
+% \begin{definition*}{(Transformacja Jordana-Wignera)}
+%     \[ \hat{a}_{p\sigma} = \hat{a}_{\sigma N+p} = TODO \]
+%     gdzie:
+%     \begin{itemize}
+%         \item $\sigma_k^+$ - creation operator, zdefiniowany jako $\sigma_k^+ = \frac{1}{2}\left(X_k-iY_k\right)$
+%     \end{itemize}
+% \end{definition*}
 
-$U(t) = exp(-i\hat{H}t/\lambda)\approx f(\frac{\hat{H}t}{\lambda})$
+% $U(t) = exp(-i\hat{H}t/\lambda)\approx f(\frac{\hat{H}t}{\lambda})$
 
 \end{document}
