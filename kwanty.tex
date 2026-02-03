@@ -1309,15 +1309,15 @@ Wtedy nasz układ prezentuje się następująco (na wyjściach dla czytelności 
 \begin{tikzpicture}
 \node[scale=0.96]{
 \begin{quantikz}
-\lstick{$\ket{x_1}$} & \gate{H}
+\lstick{$\ket{k_1}$} & \gate{H}
 \gategroup[5,steps=5,style={dashed,rounded corners,fill=cyan!10,inner xsep=3pt},background,label style={label position=below,anchor=north,yshift=-0.4cm}]{{}}
 & \gate{R_2} & \gate{R_3} & \ldots & \gate{R_n} & & & & \ldots & & \ldots & & \swap{2} & & & \rstick{$\ket{0} + e^{2\pi i[0.k_n]}\ket{1}$} \\
-\lstick{$\ket{x_2}$} & & \control{1} \wire[u]{q} &  \wire[u]{q}\wire[d]{q} & \ldots & \wire[u]{q}\wire[d]{q} & & \gate{H}
+\lstick{$\ket{k_2}$} & & \control{1} \wire[u]{q} &  \wire[u]{q}\wire[d]{q} & \ldots & \wire[u]{q}\wire[d]{q} & & \gate{H}
 \gategroup[4,steps=4,style={dashed,rounded corners,fill=cyan!10,inner xsep=3pt},background,label style={label position=below,anchor=north,yshift=-0.4cm}]{{}}
 & \gate{R_2} & \ldots & \gate{R_{n-1}} & \ldots & & & \swap{1} & & \rstick{$\ket{0} + e^{2\pi i[0.k_{n-1}k_n]}\ket{1}$}  \\
-\lstick{$\ket{x_3}$} & & & \control{1} & \ldots & \wire[u]{q}\wire[d]{q} & & & \control{1}\wire[u]{q} & \ldots & \wire[u]{q}\wire[d]{q} & \ldots & & & & \swap{0} & \rstick{$\ket{0} + e^{2\pi i[0.k_{n-2}k_{n-1}k_n]}\ket{1}$} \\
+\lstick{$\ket{k_3}$} & & & \control{1} & \ldots & \wire[u]{q}\wire[d]{q} & & & \control{1}\wire[u]{q} & \ldots & \wire[u]{q}\wire[d]{q} & \ldots & & & & \swap{0} & \rstick{$\ket{0} + e^{2\pi i[0.k_{n-2}k_{n-1}k_n]}\ket{1}$} \\
 \lstick{\vdots} &\setwiretype{n} & & & \ddots & \push{\vdots}\wire[u]{q}\wire[d]{q} & & & & \ddots & \push{\vdots}\wire[u]{q}\wire[d]{q} & \ddots & & \push{\vdots}\wire[u]{q}\wire[d]{q} & \push{\vdots}\wire[u]{q} & \push{\vdots}\wire[u]{q}  & \rstick{\vdots} \\
-\lstick{$\ket{x_n}$} & & & & \ldots & \control{1}\wire[u]{q} & & & & \ldots & \control{1} & \ldots & \gate{H}
+\lstick{$\ket{k_n}$} & & & & \ldots & \control{1}\wire[u]{q} & & & & \ldots & \control{1} & \ldots & \gate{H}
 \gategroup[1,steps=1,style={dashed,rounded corners,fill=cyan!10,inner xsep=3pt},background,label style={label position=below,anchor=north,yshift=-0.4cm}]{{}}
 & \targX{} & & & \rstick{$\ket{0} + e^{2\pi i[0.k_1\ldots k_n]}\ket{1}$} 
     \end{quantikz}
